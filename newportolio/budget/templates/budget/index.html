@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load humanize %}
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budgeting App</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    {% block styles%}
+   
+   
+    {% endblock %}
+    {% block scripts%} 
+
+    {% endblock scripts%}
+
+   <style>
+
+ 
+</style>
+</head>
+<body>
+    <header>
+        
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'budget:home'%}">Home</a>
+                  </li>
+                <li>
+                    <a href="{% url 'budget:budget_list'%}">MyBudget</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'budget:savings-goals'%}">MyGoals</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'budget:debt-list'%}">MyDebt</a>
+                  </li>
+                  {% if user.is_authenticated%}
+                  <form id="logout-form" method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-link">Logout</button>
+                  </form>                
+                  
+      
+                {%else %}
+              <a class="dropdown-item" href="{% url 'login'%}?next={{request.path}}">Login</a>
+              
+              <a class="dropdown-item" href="{% url 'budget:signup'%}">Signup</a>
+                  
+                {% endif %}
+
+            </ul>
+        </nav>
+      
+    </header>
+   
+    <main>
+        {% block content%}
+        
+        <section class="hero">
+            <h1>Take control of your finances with our budgeting app</h1>
+            <p>Track your income, expenses, and savings in one place</p>
+            <button><a class="dropdown-item" href="{% url 'budget:signup'%}">Signup</a></button>
+        </section>
+        <section class="features">
+            <h2>Key Features</h2>
+            <div class="feature">
+                <h3>Track your expenses</h3>
+                <p>Monitor your spending habits and stay on top of your finances</p>
+            </div>
+            <div class="feature">
+                <h3>Set savings goals</h3>
+                <p>Set targets and work towards achieving your financial objectives</p>
+            </div>
+            <div class="feature">
+                <h3>Get insights into your spending habits</h3>
+                <p>Understand where your money is going and make informed decisions</p>
+            </div>
+        </section>
+        <section class="call-to-action">
+            <button><a href="{% url 'login'%}">Login to get started.</a></button>
+            <button><a href="{% url 'budget:signup'%}">Sign up for free</a></button>
+        </section>
+        {% endblock content%}
+    </main>
+ 
+    <footer>
+        <p>&copy; 2024 Budgeting App</p>
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Terms of Service</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

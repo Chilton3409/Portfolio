@@ -1,0 +1,62 @@
+{% extends "budget/index.html"%}
+
+{% block content %}
+
+
+
+<br>
+<div class="container-fluid text-center">
+
+  
+
+    
+<form action="" class="form-inline-responsive bg-dark text-light" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table text-light btn-outline-info table-striped table-lg bg-dark">
+        {{form.as_table}}
+    </table>
+   
+    <input type="submit" class="btn btn-primary" value="Submit">
+    
+    
+</form>
+<script>
+const name = document.getElementById('id_name');
+const income = document.getElementById('id_income');
+const expense = document.getElementById('id_expenses');
+
+
+
+
+
+
+income.classList.add("btn-outline-success");
+expense.classList.add('btn-outline-success');
+name.classList.add("btn-outline-success");
+name.focus();
+</script>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+
+<footer>
+    <div class="container text-center">
+        <div class="col-6 col-md-4"></div>
+        <div class="col-6 col-md-4"></div>
+        
+    </div>
+
+</footer>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "budget/index.html"%}
+
+{% block content %}
+{% load static %}
+{% load humanize %}
+
+
+
+{% if debt %}
+
+<div class="container text-center">
+  <h3>{{debt.name}}</h3>
+  
+  <div class="row">
+    <div class="col-6 col-md-4"><a href="{% url 'budget:debt-update' debt.id %}">Update Budget</a></div>
+    <div class="col-6 col-md-4"><a href="{% url 'budget:debt-delete' debt.id %}">Delete Budget</a></div>
+
+
+
+
+  </div>
+  <div class="col-12 col-md-8"><a href="{% url 'budget:debt-list'%}">Go back?</a></div>
+<br>
+</div>
+
+{% else %}
+<p> no debt has been created.</p>
+<a href="{% url 'budget:debt-create'%}">Create debt items to get started</a>
+
+
+{%endif%}
+
+
+
+
+{% endblock %}
+
+
+

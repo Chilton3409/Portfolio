@@ -1,0 +1,15 @@
+{% extends "store/base_generic.html" %}
+
+{% block content %}
+<h2 class="text-info">Eazbudget partners with Stripe for a seamless billing process.</h2>
+
+<p class="lead text-success fs-1">Thank you for your interest in Eazbudgets financial tools. Please subscribe for just $2.99 a year, help make your money matters, easy, start today with eazbudget.</p>
+
+<p>Please subscribe by clicking the button below</p>
+
+<button class="btn btn-success"><a class="nav-link" href="{% url 'subscriptions:subscription' %}">Subscribe</a></button>
+    
+
+
+
+{% endblock %}

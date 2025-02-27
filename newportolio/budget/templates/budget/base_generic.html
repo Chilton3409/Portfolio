@@ -1,0 +1,397 @@
+<!doctype html>
+
+<html lang="en">
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load humanize%}
+<head>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script async
+src="https://js.stripe.com/v3/buy-button.js">
+</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="max-image-preview:standard">
+    <meta property="eazbudget.com, where budgeting is made easy" content="Build a budgeting plan, create savings goals, and manage your debt. Start with a free trial today" />
+    <meta description="Easy to use, without using any of your personal data. You can make money matters simple with eazbudget.">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      {% block title%}<title class="text-wrap">eazbudget, money matters made simple.</title>{% endblock %}
+      <meta charset="UTF-8">
+      <meta name="description" content="Eazbudget, budget planning made easy for everyone. Easily create, manage, update and delete your budget. Simplify your budgeting needs with eazbudget.">
+      
+      <meta name="keywords" content="A way to easily maintain, manage, and create your budget. Eazbudget is budget planning made easy. Budget, Budget planner, create a budget, budget app.">
+      <meta content="Simplify all of your budgeting needs with eazbudget for only 2.99 a year.">
+      <meta content="All of budget planning made simple with eazbudget.">
+      <meta content="en_US" property="og:locale">
+      <meta content="article" property="og:type">
+      <!--meta content="https:eazbudget.com"-->
+      <meta content="https://www.eazbudget.com" property="og:url">
+      <meta content="eazbudget budget planning" property="og:site_name">
+      <meta content="Simplify your life with eazbudget, a budget planner for everyone.">
+      <meta content="yes" name="mobile-web-app-capable"/>
+      <meta content="yes" name="apple-mobile-web-app-capable"/>
+      <meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+    
+
+
+      {% block styles%}
+      <!--enter additional css as needed-->
+      <link rel="stylesheet" href="{% static 'css/main.css'%}">
+      {% endblock%}
+      <link rel="stylesheet" href="{% static 'css/carousel.css' %}">
+      <link rel="stylesheet" href="{% static 'css/grid.css' %}">
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!---latest-->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<!--end-->
+<script src="{% static 'js/carousel.js'%}"></script>
+<script src="{% static 'js/holder.min.js'%}"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!--Chart js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    </head>
+
+
+     
+  
+      
+  
+
+        
+  <br>
+  {% block scripts%}
+  {% endblock scripts %}
+
+
+  
+
+      <body class="container-fluid-sm fs-2 bg-dark text-light text-center">
+        {% block second_nav%}
+ 
+<header class="container-fluid">
+
+  <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand text-light" href="{% url 'store:home'%}">EazBudget</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsable" aria-controls="#collapsable" aria-expaned="false" aria-label="Toggle Navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsable">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'budget:budget_list'%}">MyBudget</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'budget:savings-goals'%}">MyGoals</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'budget:debt-list'%}">MyDebt</a>
+      </li>
+     <li class="nav-item">
+     
+      
+      
+     </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MyTools</a>
+        <div class="dropdown-menu">
+          <div role="separator" class="dropdown-divider"></div>
+          <a class="dropdown-item link-success" href="{% url 'budget:budget_create'%}">Create Budget</a>
+          <a class="dropdown-item link-info" href="{% url 'budget:savings-goals-create'%}">Create a Savings Goal</a>
+          <div role="separator" class="dropdown-divider"></div>
+
+          <a class="dropdown-item link-secondary" href="{% url 'budget:debt-create'%}">Create Debt</a>
+
+        </div>
+     
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
+          <div class="dropdown-menu">
+            {% if user.is_authenticated%}
+
+            <a class="dropdown-item" href="{% url 'users:my-profile'%}">MyProfile</a>
+              <a class="dropdown-item" href="{% url 'account_logout'%}?next={{request.path}}">Logout</a>
+
+              
+             
+              <a class="dropdown-item" href="{% url 'account_set_password'%}">Change password</a>
+            {% if user.is_subscribed %}
+            <a class="dropdown-item" href="https://billing.stripe.com/p/login/9AQg330jH2GUdos9AA">Manage Subscription</a>
+            {% else %}
+            <a class="dropdown-item" href="{% url 'subscriptions:subscription'%}">Subscribe</a>
+
+              
+              <a class="dropdown-item" href="https://buy.stripe.com/test_dR68yM58g3yi83mfYY">SubscribeLowCode</a>
+              {% endif %}
+             
+             
+            
+              <a class="dropdown-item" href="{% url 'account_email'%}">Email Details</a>
+
+
+              {%else %}
+              <a class="dropdown-item" href="{% url 'login'%}?next={{request.path}}">Login</a>
+              
+              <a class="dropdown-item" href="{% url 'account_signup'%}">Signup</a>
+
+         
+{% get_providers as socialaccount_providers %}
+
+{% if socialaccount_providers %}
+
+
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   Social Media Login
+  </a>
+
+  <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+    
+   
+<p class="lead text-success">{% blocktrans with site.name as site_name %}Please sign in with one
+of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+for an eazbudget.com account and sign in below:{% endblocktrans %}</p>
+
+<div class="socialaccount_ballot text-center">
+
+  <ul class="socialaccount_providers  dropdown-item">
+    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+  </ul>
+
+
+</div>
+ </div>
+</li>
+{% include "socialaccount/snippets/login_extra.html" %}
+
+{% else %}
+<p>{% blocktrans %}If you have not created an account yet, then please
+<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+{% endif %}
+              
+
+
+              {% endif %}
+          </div>
+          
+            
+
+
+
+        </div>
+        </header>
+      <!--end modal-->
+      </li>
+    </ul>
+   
+  </nav>
+</hr>
+
+
+
+
+
+
+
+<!---end second design nav-->
+      {% endblock second_nav%}
+       
+
+
+  
+    {% block content%}
+    <h2 class="featurette-heading text-primary">Welcome to Eazbudget!</h2>
+    
+{% if user.is_staff%}
+<p>Welcome admin {{user.get_username}}</p>
+<h2 class="text-primary">Page Visits: {{num_visits}}</h2>
+<h3 class="text-info">Number of Users: {{num_users}}</h3>
+<h4 class="text-success">Number of users subscribed: {{num_users_subscribed}}</h4>
+
+<h1 class="text-primary">Welcome {{user.get_username}}</h1>
+<p class="text-info">Last login: {{user.last_login|naturaltime}}</p>
+{%endif%}
+
+            <!-- START THE FEATURETTES -->
+
+            <hr class="featurette-divider">
+    
+            <div class="row featurette text-center">
+              <div class="col-md-7">
+           <h1 class="featurette-heading text-success">Plan your future today with eazbudget. Where money matters are made simple</h1>
+             
+                <p class="lead text-center-success">Welcome to eazbudget!!</p>
+                
+                <p class="text-success">Create budgets, hit your savings goals, that you create. Manage your debt and more!
+                </p>
+                <p><button class="btn btn-succes"><a class="btn btn-lg btn-primary" href="{% url 'subscriptions:subscription'%}" role="button">Get started Now!</a></button></p>
+                <h1 class=" featurette-heading text-success">Welcome to EazBudget!</h1>
+
+
+
+              
+                <p><a class="btn btn-lg btn-primary" href="{% url 'budget:budget_list'%}" role="button">Start today</a></p>
+                <hr class="featurette-divider">
+              </div>
+              <div class="col-md-5">
+                <img class="featurette-image img-fluid mx-auto" src="{% static 'images/sell-it.JPEG'%}">
+                <img class="featurette-image img-fluid mx-auto" src="{% static 'images/savings-goals.JPEG'%}">
+                <img class="featurette-image img-fluid mx-auto" src="{% static 'images/debt-view.JPEG'%}">
+
+              </div>
+            </div>
+
+            <div class="row featurette">
+              <div class="col-md-7">
+
+                <h2 class="featurette-heading text-info">Why should you use eazbudget? <br><hr> <span class="text-success">Simplify your budget!</h2>
+                  <br><hr><h3 class="text-danger">We don't need any personal data</h3>
+                  <br><hr><h3 class="text-info">Simple and easy to use in just a few clicks.</h3>
+                  <h4 class="text-success">for just $2.99<br> Budget. Savings. Debt. For just only $2.99 a year.</span></h4>
+
+
+                  <h4 class="text-success">for just $2.99<br> Once per year.</span></h4>
+                <br>
+                <hr>
+                <p class="lead text-info">Compare your life to your budget and see what adds up.</p>
+              
+             
+
+            
+              </div>
+              <div class="col-md-5">
+                <img class="featurette-image img-fluid mx-auto" src="{% static 'images/hand.jpg'%}">
+
+              </div>
+            </div>
+    
+            <hr class="featurette-divider">
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+            <hr class="featurette-divider">
+    
+            <div class="row featurette">
+              <div class="col-md-7">
+                <h2 class="featurette-heading text-info">Why should you use eazbudget? <br><hr> <span class="text-success">Simplify your budget!</h2>
+                  <br><hr><h3 class="text-danger">We don't need any personal data</h3>
+                  <br><hr><h3 class="text-info">Simple and easy to use in just a few clicks.</h3>
+                  <h4 class="text-success">for just $2.99<br> Budget. Savings. Debt. For just only $2.99 a year.</span></h4>
+
+
+                  <h4 class="text-success">for just $2.99<br> Once per year.</span></h4>
+                <br>
+                <hr>
+                <p class="lead text-info">Compare your life to your budget and see what adds up.</p>
+                <p class="success">Watch the video below to see how eazbudget works.</p>
+
+            
+              </div>
+              <div class="col-md-5">
+                <img class="featurette-image img-fluid mx-auto" src="{% static 'images/railroad.jpg'%}">
+
+              </div>
+            </div>
+    
+            <hr class="featurette-divider">
+    
+            <div class="row featurette">
+              <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading text-success">Easy and Simple to use for only $2.99 a year.<br><hr><span class="text-primary">Easily create budgets and simplify your spending.</span></h2>
+                <br>
+                <p class="lead text-info">
+                  Easy to use interface makes creating budgets, hitting savings goals, and managing debt a breeze for just $2.99.
+                  
+                </p>
+              
+
+              </div>
+              <div class="col-md-5 order-md-1">
+                <img class="featurette-image img-fluid mx-auto" src="{% static 'images/petunia.jpg'%}">
+              </div>
+            </div>
+    
+            <hr class="featurette-divider">
+    
+            <div class="row featurette">
+              <div class="col-md-7">
+                <h2 class="featurette-heading text-info">Contact Support<span class="text-muted">Leave me a message</span></h2>
+                <p class="lead text-danger">You can leave me a message by clicking on the link below.</p>
+                <p class="lead"><a class="btn btn-success text-info" href="{% url 'budget:business_create'%}" role="button">Leave me a message  &raquo;</a></p>
+
+                <!--enter business create form link here,-->
+              </div>
+              <div class="col-md-5">
+                <img class="featurette-image img-fluid mx-auto" src="{% static 'images/confetti-orig.jpg'%}">
+              </div>
+            </div>
+    
+            <hr class="featurette-divider">
+    
+            <!-- /END THE FEATURETTES -->
+    
+          </div><!-- /.container -->
+    
+    
+          <!-- FOOTER -->
+        
+ 
+
+
+<!---old styles-->
+
+   
+
+ 
+    <!--enter block content-->
+      {%endblock content %}
+ {% block footer %}
+
+    <footer class="container">
+      <p class="float-right"><a href="#">Back to top</a></p>
+      <p>&copy; 2022-2023 eazbudget.com, Inc. &middot; <a href="{% url 'store:privacy-policy'%}">Privacy</a> &middot; 
+        <a href="{% url 'store:terms'%}">Terms</a> 
+        <a href="{% url 'budget:business_create'%}">Need Help?</a>
+      </p>
+    </footer>
+  {% endblock footer%}
+ </main>
+ {% block bootstrap_load%}
+ <script src="{% static 'js/carousel.js'%}"></script>
+ <script src="{% static 'js/holder.min.js'%}"></script>
+ <script src="{% static 'js/popper.min.js'%}"></script>
+
+{% endblock bootstrap_load%}
+</body>
+
+<script>
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+ 
+</script>
+</html>
